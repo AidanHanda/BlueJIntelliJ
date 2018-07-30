@@ -1,0 +1,3 @@
+[console_scripts]
+BlueJIntelliJ = BlueJIntelliJ.__main__:main
+

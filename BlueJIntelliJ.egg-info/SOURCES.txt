@@ -1,0 +1,9 @@
+setup.py
+BlueJIntelliJ/__init__.py
+BlueJIntelliJ/__main__.py
+BlueJIntelliJ.egg-info/PKG-INFO
+BlueJIntelliJ.egg-info/SOURCES.txt
+BlueJIntelliJ.egg-info/dependency_links.txt
+BlueJIntelliJ.egg-info/entry_points.txt
+BlueJIntelliJ.egg-info/requires.txt
+BlueJIntelliJ.egg-info/top_level.txt
