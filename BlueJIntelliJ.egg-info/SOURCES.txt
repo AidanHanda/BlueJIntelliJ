@@ -1,3 +1,4 @@
+README
 setup.py
 BlueJIntelliJ/__init__.py
 BlueJIntelliJ/__main__.py
