@@ -76,6 +76,7 @@ def createProject(oldproject, outproject, name):
     zip_ref = zipfile.ZipFile(outproject+".zip", 'r')
     zip_ref.extractall(outproject)
     zip_ref.close()
+    os.rename(outproject+"/idea",outproject+"/.idea")
     shutil.copytree(oldproject, outproject + "/src")
     os.rename(outproject + "/rename.iml", outproject + "/%s.iml" % name)
     with fileinput.FileInput(outproject + "/.idea/modules.xml", inplace=True, backup='.bak') as file:
