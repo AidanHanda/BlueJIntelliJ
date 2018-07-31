@@ -7,11 +7,18 @@ setup(
     author_email='handa.aidan@gmail.com',
     version = '0.1.0',
     packages = ['BlueJIntelliJ'],
+    include_package_data = True,
     install_requires=[
           'click',
       ],
     entry_points = {
         'console_scripts': [
-            'BlueJIntelliJ = BlueJIntelliJ.__main__:main'
+            'BlueJIntelliJ = BlueJIntelliJ.__main__:createProject'
+        ]
+    },
+    package_data = {
+        'BlueJIntelliJ': [
+           'data/*.*',
+           'data/*/*.*'
         ]
     })

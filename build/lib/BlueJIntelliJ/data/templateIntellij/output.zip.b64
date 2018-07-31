@@ -1,13 +1,4 @@
-import click
-import setuptools
-import shutil
-import os
-import fileinput
-import os
-import zipfile
-import base64
-
-template = """UEsDBBQACAAIAGp5/0wAAAAAAAAAAAAAAAAKABAAcmVuYW1lLmltbFVYDAAO0mBbZ8JgW/UBFAB1
+UEsDBBQACAAIAGp5/0wAAAAAAAAAAAAAAAAKABAAcmVuYW1lLmltbFVYDAAO0mBbZ8JgW/UBFAB1
 kF1LwzAUhu/3K8JhtzUOvBBpOwbbwGEV5ubtKMnZLEtzykmi27837YJTxMskz/uRN5+eWiM+kF1D
 toDJzS0ItIp0Yw8FbDfL7B6m5ShvSQeDwp87LGA1e5vtqpf59mkBV+0dlCMhckVtRxatF7ZuI/yM
 n9UgXhP5qrb1ARlEY9+RG5/1dGOQMwq+C74AzwEHo2iFJ2WCxvQmZLpWZH3vH9gUsI/qBynHlzq7
@@ -61,29 +52,3 @@ cmtzcGFjZS54bWxVWAgADtJgW2fCYFtQSwECFQMUAAgACABqef9MiNE/Y6MAAAD8AAAAEAAMAAAA
 AAAAAABApIFqCAAAaWRlYS9tb2R1bGVzLnhtbFVYCAAO0mBbZ8JgW1BLAQIVAxQACAAIAGp5/0yg
 f9PDxAAAABEBAAANAAwAAAAAAAAAAECkgVsJAABpZGVhL21pc2MueG1sVVgIAA7SYFtnwmBbUEsF
 BgAAAAAFAAUAYAEAAGoKAAAAAA==
-"""
-
-
-@click.command("convert")
-@click.argument('oldProject')
-@click.argument('outProject')
-@click.argument('name')
-def createProject(oldproject, outproject, name):
-    oldproject = oldproject.strip("/")
-    outproject = outproject.strip("/")
-    with open(outproject + ".zip", "wb") as f:
-        f.write(base64.b64decode(template))
-    zip_ref = zipfile.ZipFile(outproject+".zip", 'r')
-    zip_ref.extractall(outproject)
-    zip_ref.close()
-    shutil.copytree(oldproject, outproject + "/src")
-    os.rename(outproject + "/rename.iml", outproject + "/%s.iml" % name)
-    with fileinput.FileInput(outproject + "/.idea/modules.xml", inplace=True, backup='.bak') as file:
-        for line in file:
-            print(line.replace("rename", name), end='')
-
-
-
-
-if __name__ == "__main__":
-    createProject()
